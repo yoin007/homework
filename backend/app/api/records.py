@@ -35,6 +35,10 @@ def read_records(
 ):
     """获取作业记录列表，支持筛选"""
     try:
+        # 如果任何参数为None，返回空列表
+        if any(param is None for param in [grade, start_date, end_date]):
+            return []
+
         filter_params = RecordFilter(
             grade=grade,
             class_name=class_name,
